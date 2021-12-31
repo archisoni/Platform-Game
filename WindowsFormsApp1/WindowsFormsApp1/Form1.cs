@@ -101,7 +101,16 @@ namespace WindowsFormsApp1
                         gameTimer.Stop();
                         isGameOver = true;
                         lblScore.Text = "Score: " + score + Environment.NewLine + "You were killed in your journey!!";
-                        MessageBox.Show("Press Enter to Restart Game", "GAME OVER");
+                        DialogResult result = MessageBox.Show("Do you want to Restart the Game?", "GAME OVER", MessageBoxButtons.YesNo);
+                        
+                        if (result == DialogResult.Yes)
+                        {
+                            Restart();
+                        }
+                        else
+                        {
+                            this.Close();
+                        }
                     }
                 }
             }
@@ -141,7 +150,16 @@ namespace WindowsFormsApp1
                 gameTimer.Stop();
                 isGameOver = true;
                 lblScore.Text = "Score: " + score + Environment.NewLine + "You fell to your death!";
-                MessageBox.Show("Press Enter to Restart Game", "GAME OVER");
+                DialogResult result = MessageBox.Show("Do you want to Restart the Game?", "GAME OVER", MessageBoxButtons.YesNo);
+                        
+                if (result == DialogResult.Yes)
+                {
+                    Restart();
+                }
+                else
+                {
+                    this.Close();
+                }
             }
 
             if (player.Bounds.IntersectsWith(door.Bounds) && score == 26)
@@ -149,7 +167,16 @@ namespace WindowsFormsApp1
                 gameTimer.Stop();
                 isGameOver = true;
                 lblScore.Text = "Score: " + score + Environment.NewLine + "Your quest is completed!";
-                MessageBox.Show("Congratulations!! You Won the Game!", "YOU WON");
+                DialogResult result = MessageBox.Show("Do you want to Play Again?", "Congratulations!! YOU WON THE GAME!", MessageBoxButtons.YesNo);
+
+                if (result == DialogResult.Yes)
+                {
+                    Restart();
+                }
+                else
+                {
+                    this.Close();
+                }
             }
             else if (player.Bounds.IntersectsWith(door.Bounds) && score != 26)
             {
